@@ -1,0 +1,20 @@
+import PyPDF2
+
+# Abra o arquivo PDF
+with open('seuarquivo.pdf', 'rb') as pdf_file:
+    # Crie um objeto PDFReader
+    pdf_reader = PyPDF2.PdfFileReader(pdf_file)
+
+    # Verifique o número de páginas no PDF
+    num_pages = pdf_reader.getNumPages()
+
+    # Itere por todas as páginas e leia o conteúdo
+    for page_number in range(num_pages):
+        # Obtenha o objeto de página
+        page = pdf_reader.getPage(page_number)
+        
+        # Extraia o texto da página
+        page_text = page.extractText()
+        
+        # Imprima o texto da página
+        print(page_text)
